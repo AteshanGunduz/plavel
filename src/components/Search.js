@@ -11,18 +11,21 @@ const Search = ({ datas }) => {
 
 
   //Local Storage - Keep checkedData
-
-  useEffect(() => {
-    localStorage.setItem('selected', JSON.stringify(selected));
-    localStorage.setItem('checkedData', JSON.stringify(checkedData));
-  }, [selected, checkedData]);
   
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('selected', JSON.stringify(selected));
+      localStorage.setItem('checkedData', JSON.stringify(checkedData));
+    }
+  }, [selected, checkedData]);
+
   const storedSelected = JSON.parse(localStorage.getItem('selected')) || [];
   const storedCheckedData = JSON.parse(localStorage.getItem('checkedData')) || [];
   useEffect(() => {
-    
-    setSelected(storedSelected);
-    setCheckedData(storedCheckedData);
+    if (typeof window !== 'undefined') {
+      setSelected(storedSelected);
+      setCheckedData(storedCheckedData);
+    }
   }, []);
   
   // Default Data Display
