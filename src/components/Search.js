@@ -11,7 +11,7 @@ const Search = ({ datas }) => {
 
 
   //Local Storage - Keep checkedData
-  
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('selected', JSON.stringify(selected));
@@ -19,8 +19,9 @@ const Search = ({ datas }) => {
     }
   }, [selected, checkedData]);
 
-  const storedSelected = JSON.parse(localStorage.getItem('selected')) || [];
-  const storedCheckedData = JSON.parse(localStorage.getItem('checkedData')) || [];
+  const storedSelected = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('selected')) || [] : console.log("LocalStorage is not avaliable")
+  const storedCheckedData = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('checkedData')) || [] : console.log("LocalStorage is not avaliable")
+  
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setSelected(storedSelected);
