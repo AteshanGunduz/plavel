@@ -42,6 +42,9 @@ const Search = ({ datas }) => {
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
+    if (e.target.value.trim() === "") {
+      setSearchData(test);
+    }
   };
 
 
